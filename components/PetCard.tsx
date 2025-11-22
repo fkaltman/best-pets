@@ -1,4 +1,4 @@
-import { View, Text, Pressable, StyleSheet } from 'react-native';
+import { View, Text, Pressable, StyleSheet, Image } from 'react-native';
 
 interface Pet {
   id: string;
@@ -16,9 +16,15 @@ export default function PetCard({ pet, onPress }: PetCardProps) {
   return (
     <Pressable onPress={onPress}>
       <View style={styles.card}>
-        <Text style={styles.name}>{pet.name}</Text>
-        <Text style={styles.type}>{pet.type}</Text>
-        <Text style={styles.description}>{pet.description}</Text>
+        <Image
+          source={{ uri: `https://via.placeholder.com/300x200?text=${pet.name}` }}
+          style={styles.image}
+        />
+        <View style={styles.content}>
+          <Text style={styles.name}>{pet.name}</Text>
+          <Text style={styles.type}>{pet.type}</Text>
+          <Text style={styles.description}>{pet.description}</Text>
+        </View>
       </View>
     </Pressable>
   );
@@ -27,11 +33,18 @@ export default function PetCard({ pet, onPress }: PetCardProps) {
 const styles = StyleSheet.create({
   card: {
     backgroundColor: '#fff',
-    padding: 16,
     marginBottom: 12,
     borderRadius: 8,
     borderWidth: 1,
     borderColor: '#e0e0e0',
+    overflow: 'hidden',
+  },
+  image: {
+    width: '100%',
+    height: 200,
+  },
+  content: {
+    padding: 16,
   },
   name: {
     fontSize: 18,

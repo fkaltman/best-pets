@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Pressable, ScrollView } from "react-native";
 import { useState } from "react";
 import { PetList } from "../components";
 
@@ -13,7 +13,7 @@ const SAMPLE_PETS: Pet[] = [
   {
     id: "1",
     name: "Max",
-    type: "Golden Retriever",
+    type: "Dog",
     description: "Friendly and energetic, loves fetch and swimming",
   },
   {
@@ -25,7 +25,7 @@ const SAMPLE_PETS: Pet[] = [
   {
     id: "3",
     name: "Charlie",
-    type: "Beagle",
+    type: "Dog",
     description: "Curious and playful, great for active families",
   },
   {
@@ -37,13 +37,39 @@ const SAMPLE_PETS: Pet[] = [
   {
     id: "5",
     name: "Rocky",
-    type: "German Shepherd",
+    type: "Dog",
     description: "Loyal and intelligent, excellent guard dog",
+  },
+  {
+    id: "6",
+    name: "Spike",
+    type: "Reptile",
+    description: "Bearded dragon, calm and easy to handle",
+  },
+  {
+    id: "7",
+    name: "Sly",
+    type: "Reptile",
+    description: "Ball python, docile and low-maintenance",
+  },
+  {
+    id: "8",
+    name: "Sheldon",
+    type: "Reptile",
+    description: "Leopard gecko, curious and interactive",
   },
 ];
 
+const PET_TYPES = ["All", "Dog", "Cat", "Rabbit", "Reptile"];
+
 export default function Index() {
   const [selectedPet, setSelectedPet] = useState<Pet | null>(null);
+  const [selectedType, setSelectedType] = useState<string>("All");
+
+  const filteredPets =
+    selectedType === "All"
+      ? SAMPLE_PETS
+      : SAMPLE_PETS.filter((pet) => pet.type === selectedType);
 
   const handlePetPress = (pet: Pet) => {
     setSelectedPet(pet);
@@ -74,7 +100,30 @@ export default function Index() {
           </Text>
         </View>
       ) : (
-        <PetList pets={SAMPLE_PETS} onPetPress={handlePetPress} />
+        <>
+          <View style={styles.filterContainer}>
+            {PET_TYPES.map((type) => (
+              <Pressable
+                key={type}
+                onPress={() => setSelectedType(type)}
+                style={[
+                  styles.filterButton,
+                  selectedType === type && styles.filterButtonActive,
+                ]}
+              >
+                <Text
+                  style={[
+                    styles.filterButtonText,
+                    selectedType === type && styles.filterButtonTextActive,
+                  ]}
+                >
+                  {type}
+                </Text>
+              </Pressable>
+            ))}
+          </View>
+          <PetList pets={filteredPets} onPetPress={handlePetPress} />
+        </>
       )}
     </View>
   );
@@ -130,5 +179,34 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "#007AFF",
     fontWeight: "600",
+  },
+  filterContainer: {
+    flexDirection: "row",
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    backgroundColor: "#fff",
+    borderBottomWidth: 1,
+    borderBottomColor: "#e0e0e0",
+    gap: 8,
+  },
+  filterButton: {
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    borderRadius: 20,
+    backgroundColor: "#f0f0f0",
+    borderWidth: 1,
+    borderColor: "#ddd",
+  },
+  filterButtonActive: {
+    backgroundColor: "#007AFF",
+    borderColor: "#007AFF",
+  },
+  filterButtonText: {
+    fontSize: 14,
+    fontWeight: "500",
+    color: "#666",
+  },
+  filterButtonTextActive: {
+    color: "#fff",
   },
 });
