@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Pressable, ScrollView } from "react-native";
+import { View, Text, StyleSheet, Pressable, ScrollView, useWindowDimensions } from "react-native";
 import { useState } from "react";
 import { PetList } from "../components";
 
@@ -63,8 +63,11 @@ const SAMPLE_PETS: Pet[] = [
 const PET_TYPES = ["All", "Dog", "Cat", "Rabbit", "Reptile"];
 
 export default function Index() {
+  const { width } = useWindowDimensions();
   const [selectedPet, setSelectedPet] = useState<Pet | null>(null);
   const [selectedType, setSelectedType] = useState<string>("All");
+
+  const containerWidth = width > 600 ? 600 : width;
 
   const filteredPets =
     selectedType === "All"
@@ -77,6 +80,7 @@ export default function Index() {
 
   return (
     <View style={styles.container}>
+      <View style={[styles.innerContainer, { width: containerWidth, alignSelf: "center" }]}>
       <View style={styles.header}>
         <Text style={styles.title}>Find Your Perfect Pet</Text>
         <Text style={styles.subtitle}>
@@ -125,6 +129,7 @@ export default function Index() {
           <PetList pets={filteredPets} onPetPress={handlePetPress} />
         </>
       )}
+      </View>
     </View>
   );
 }
@@ -133,6 +138,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#f5f5f5",
+  },
+  innerContainer: {
+    flex: 1,
   },
   header: {
     paddingHorizontal: 16,
