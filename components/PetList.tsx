@@ -6,6 +6,7 @@ interface Pet {
   name: string;
   type: string;
   description: string;
+  image: string;
 }
 
 interface PetListProps {

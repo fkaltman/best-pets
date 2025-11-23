@@ -6,58 +6,72 @@ interface Pet {
   id: string;
   name: string;
   type: string;
+  owner: string;
   description: string;
+  image: string;
 }
 
 const SAMPLE_PETS: Pet[] = [
   {
     id: "1",
-    name: "Max",
+    name: "Sunny",
     type: "Dog",
-    description: "Friendly and energetic, loves fetch and swimming",
+    owner: "Myra Buffam",
+    description: `A chill, lovable, well-dressed gal about town.`,
+    image: "https://i.imgur.com/Mpylec9.jpeg",
   },
   {
     id: "2",
-    name: "Luna",
-    type: "Cat",
-    description: "Calm and affectionate, perfect for apartment living",
+    name: "Lucky",
+    type: "Dog",
+    owner: "Sage Dixon",
+    description: "The hype pup of the heights and a total social butterfly.",
+    image: "https://i.imgur.com/YHhLeZc.jpeg",
   },
   {
     id: "3",
-    name: "Charlie",
-    type: "Dog",
-    description: "Curious and playful, great for active families",
+    name: "Sherman",
+    type: "Reptile",
+    owner: "William Schultz",
+    description: "Just look at the markings on this dapper fellow.",
+    image: "https://i.imgur.com/dOJDK1R.png",
   },
   {
     id: "4",
-    name: "Bella",
-    type: "Rabbit",
+    name: "Pikachu",
+    type: "Cat",
+    owner: "Leo Doohan",
     description: "Gentle and quiet, ideal for peaceful homes",
+    image: "https://i.imgur.com/gLgyjN1.jpeg",
   },
-  {
-    id: "5",
-    name: "Rocky",
-    type: "Dog",
-    description: "Loyal and intelligent, excellent guard dog",
-  },
-  {
-    id: "6",
-    name: "Spike",
-    type: "Reptile",
-    description: "Bearded dragon, calm and easy to handle",
-  },
-  {
-    id: "7",
-    name: "Sly",
-    type: "Reptile",
-    description: "Ball python, docile and low-maintenance",
-  },
-  {
-    id: "8",
-    name: "Sheldon",
-    type: "Reptile",
-    description: "Leopard gecko, curious and interactive",
-  },
+  // {
+  //   id: "5",
+  //   name: "Rocky",
+  //   type: "Dog",
+  //   description: "Loyal and intelligent, excellent guard dog",
+  //   image: "https://images.unsplash.com/photo-1587300411515-430ee519e9c4?w=300&h=200&fit=crop",
+  // },
+  // {
+  //   id: "6",
+  //   name: "Spike",
+  //   type: "Reptile",
+  //   description: "Bearded dragon, calm and easy to handle",
+  //   image: "https://images.unsplash.com/photo-1678730407661-14dd0eee32b3?w=300&h=200&fit=crop",
+  // },
+  // {
+  //   id: "7",
+  //   name: "Sly",
+  //   type: "Reptile",
+  //   description: "Ball python, docile and low-maintenance",
+  //   image: "https://images.unsplash.com/photo-1609570695215-04577b60a737?w=300&h=200&fit=crop",
+  // },
+  // {
+  //   id: "8",
+  //   name: "Sheldon",
+  //   type: "Reptile",
+  //   description: "Leopard gecko, curious and interactive",
+  //   image: "https://images.unsplash.com/photo-1600244512573-1da4c3eb32d2?w=300&h=200&fit=crop",
+  // },
 ];
 
 const PET_TYPES = ["All", "Dog", "Cat", "Rabbit", "Reptile"];

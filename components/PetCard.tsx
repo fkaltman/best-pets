@@ -5,6 +5,7 @@ interface Pet {
   name: string;
   type: string;
   description: string;
+  image: string;
 }
 
 interface PetCardProps {
@@ -17,7 +18,7 @@ export default function PetCard({ pet, onPress }: PetCardProps) {
     <Pressable onPress={onPress}>
       <View style={styles.card}>
         <Image
-          source={{ uri: `https://via.placeholder.com/300x200?text=${pet.name}` }}
+          source={{ uri: pet.image }}
           style={styles.image}
         />
         <View style={styles.content}>
