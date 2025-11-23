@@ -1,12 +1,5 @@
-import { View, Text, Pressable, StyleSheet, Image } from 'react-native';
-
-interface Pet {
-  id: string;
-  name: string;
-  type: string;
-  description: string;
-  image: string;
-}
+import { Image, Pressable, StyleSheet, Text, View } from "react-native";
+import { Pet } from "../types/types";
 
 interface PetCardProps {
   pet: Pet;
@@ -17,10 +10,7 @@ export default function PetCard({ pet, onPress }: PetCardProps) {
   return (
     <Pressable onPress={onPress}>
       <View style={styles.card}>
-        <Image
-          source={{ uri: pet.image }}
-          style={styles.image}
-        />
+        <Image source={{ uri: pet.image }} style={styles.image} />
         <View style={styles.content}>
           <Text style={styles.name}>{pet.name}</Text>
           <Text style={styles.type}>{pet.type}</Text>
@@ -33,15 +23,15 @@ export default function PetCard({ pet, onPress }: PetCardProps) {
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     marginBottom: 12,
     borderRadius: 8,
     borderWidth: 1,
-    borderColor: '#e0e0e0',
-    overflow: 'hidden',
+    borderColor: "#e0e0e0",
+    overflow: "hidden",
   },
   image: {
-    width: '100%',
+    width: "100%",
     height: 200,
   },
   content: {
@@ -49,16 +39,16 @@ const styles = StyleSheet.create({
   },
   name: {
     fontSize: 18,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: 4,
   },
   type: {
     fontSize: 14,
-    color: '#666',
+    color: "#666",
     marginBottom: 8,
   },
   description: {
     fontSize: 13,
-    color: '#888',
+    color: "#888",
   },
 });

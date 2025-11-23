@@ -1,13 +1,6 @@
-import { FlatList, View, StyleSheet } from 'react-native';
-import PetCard from './PetCard';
-
-interface Pet {
-  id: string;
-  name: string;
-  type: string;
-  description: string;
-  image: string;
-}
+import { FlatList, StyleSheet } from "react-native";
+import { Pet } from "../types/types";
+import PetCard from "./PetCard";
 
 interface PetListProps {
   pets: Pet[];
